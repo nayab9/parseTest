@@ -1,0 +1,3 @@
+Just a simple python script to test the speed of some string parsing for string inputs.
+
+String input limited to characters only, no special case checking.
