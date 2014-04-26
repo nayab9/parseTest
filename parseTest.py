@@ -4,6 +4,7 @@
 #example: foo and oof contain the same characters the same number of times
 
 import timeit
+import hashlib
 
 #define the number of times to run the function for benchmarking
 number_of_runs = 100000
@@ -25,7 +26,7 @@ def sortMethod(input_string):
 	
 	#print word_count
 
-#this method will convert the string into a unique value to count occurences
+#this method will hash a unique value for each char in a word, then sum them together, to use as a unique value
 def hashMethod(input_string):
 
 	word_count = {}
@@ -34,9 +35,9 @@ def hashMethod(input_string):
 	for i, word in enumerate(string_list):
 	
 		word_hash = 0
-		#find some simple unique value to reprsent the word
+		#find some unique value to represent the word
 		for char in word:
-			word_hash += ord(char)
+			word_hash += int(hashlib.md5(char).hexdigest(), 16)
 
 		if word_hash in word_count:
 			word_count[word_hash] += 1
